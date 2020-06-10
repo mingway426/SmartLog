@@ -1,2 +1,2 @@
-include ':app', ':smartloginfo_tool'
+include ':smartloginfo_tool'
 rootProject.name='SmartLogInfo'
