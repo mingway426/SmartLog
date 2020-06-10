@@ -1,8 +1,10 @@
 package com.mingway.smartloginfo_tool;
 
-public class Log {
+import android.content.Context;
+
+public class SLog {
     static LogCallBack sLogCb;
-   private  Log() {
+   private SLog() {
         super();
     }
 
@@ -43,9 +45,10 @@ public class Log {
     public static final boolean USE_E = false;
 
 
-    public static void init(String mainTag, LogCallBack cb){
+    public static void init(Context context, String mainTag, LogCallBack cb){
         sLogCb = cb;
         MAIN_TAG  = mainTag;
+        UiUtil.init(context);
         FileUtil.getsInstance();
         FileUtil.initFileWriter(IS_DEBUG);
     }
@@ -115,9 +118,9 @@ public class Log {
         if (LEVEL > android.util.Log.DEBUG) {
             return;
         }
-//        if(sLogCb != null){
-//            sLogCb.onLog(tag,msg,null);
-//        }
+        if (sLogCb != null) {
+            sLogCb.onLog(tag, msg, null);
+        }
         FileUtil.f(tag,msg);
         if(USE_E){
             android.util.Log.e(MAIN_TAG,tag+":  " +msg);
@@ -131,9 +134,9 @@ public class Log {
             return;
         }
 
-//        if(sLogCb != null){
-//            sLogCb.onLog(tag,msg,tr);
-//        }
+        if(sLogCb != null){
+            sLogCb.onLog(tag,msg,tr);
+        }
         FileUtil.f(tag, msg+ " EX:" + android.util.Log.getStackTraceString(tr));
         if(USE_E){
             android.util.Log.e(MAIN_TAG,tag+":  " +msg,tr);
