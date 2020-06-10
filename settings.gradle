@@ -1,0 +1,2 @@
+include ':app', ':smartloginfo_tool'
+rootProject.name='SmartLogInfo'
