@@ -15,8 +15,10 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.mingway426:SmartLog:v1.0.0'
+	        implementation 'com.github.mingway426:SmartLog:releaseTag'
 	}
+
+you can find the release list [here](https://github.com/mingway426/SmartLog/releases)
 
 Step 3. init in Application onCreate()
 
